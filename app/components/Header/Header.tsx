@@ -9,10 +9,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { SearchButton } from '../SearchButton/SearchButton';
 import { Search } from '../Search/Search';
+import { MobileMenu } from '../MobileMenu/MobileMenu';
+
 import CartIcon from '../../../public/icon-cart.svg';
 import FavoritesIcon from '../../../public/icon-favorites.svg';
 import ProfileIcon from '../../../public/icon-profile.svg';
-import MobileMenuIcon from '../../../public/icon-mobile-menu.svg';
+import MobileMenuOpenIcon from '../../../public/icon-mobile-menu-open.svg';
+import MobileMenuCloseIcon from '../../../public/icon-mobile-menu-close.svg';
+
 import { motion } from 'framer-motion';
 
 export const Header = ({
@@ -21,9 +25,14 @@ export const Header = ({
 }: HeaderProps): JSX.Element => {
 	const [cartCount, setCartCount] = useState(3);
 	const [isSearchVisible, setIsSearchVisible] = useState(false);
+	const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
 
 	const handleSearchButtonClick = () => {
 		setIsSearchVisible((prevState) => !prevState);
+	};
+
+	const handleIconMobileMenuClick = () => {
+		setIsMobileMenuVisible((prevState) => !prevState);
 	};
 
 	return (
@@ -50,7 +59,7 @@ export const Header = ({
 					<Search />
 				</motion.div>
 			)}
-			<div className={styles.icons}>
+			<nav className={styles.icons}>
 				<Link href="/cart" className={styles.cart}>
 					<CartIcon />
 					{cartCount > 0 && (
@@ -62,14 +71,30 @@ export const Header = ({
 				<Link href="/favorites" className={styles.favorites}>
 					<FavoritesIcon />
 				</Link>
-				<Link href="/profile" className={styles.profile}>
+				<Link href="/login" className={styles.login}>
 					<ProfileIcon />
 				</Link>
-				<MobileMenuIcon className={styles.mobileMenu} />
-			</div>
+
+				{isMobileMenuVisible ? (
+					<MobileMenuCloseIcon
+						className={styles.mobileMenuClose}
+						onClick={handleIconMobileMenuClick}
+					/>
+				) : (
+					<MobileMenuOpenIcon
+						className={styles.mobileMenuOpen}
+						onClick={handleIconMobileMenuClick}
+					/>
+				)}
+			</nav>
 			<div className={styles.searchMobile}>
 				<Search />
 			</div>
+			{isMobileMenuVisible && (
+				<div className={styles.mobileMenu}>
+					<MobileMenu />
+				</div>
+			)}
 		</header>
 	);
 };

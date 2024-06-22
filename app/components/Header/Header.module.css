@@ -63,6 +63,8 @@
 	display: none;
 }
 
+.mobileMenuOpen,
+.mobileMenuClose,
 .mobileMenu,
 .searchMobile {
 	display: none;
@@ -90,11 +92,13 @@
 	.searchButton,
 	.search,
 	.favorites,
-	.profile {
+	.login {
 		display: none;
 	}
 
 	.cartCount,
+	.mobileMenuOpen,
+	.mobileMenuClose,
 	.mobileMenu {
 		display: block;
 	}

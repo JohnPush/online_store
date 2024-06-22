@@ -1,3 +1,6 @@
+/*по сайту русский и английский текста. язык в html надо указать и ru и en?*/
+/*subsets только latin. Законно?*/
+
 import './globals.css';
 import { Metadata } from 'next';
 import { DM_Sans, Allerta_Stencil } from 'next/font/google';
