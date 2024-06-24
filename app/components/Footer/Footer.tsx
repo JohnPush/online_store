@@ -2,7 +2,7 @@ import { FooterProps } from './Footer.props';
 import styles from './Footer.module.css';
 import Link from 'next/link';
 import { Input } from '../Input/Input';
-
+import { Toaster } from 'react-hot-toast';
 import LinkedinIcon from '../../../public/icon-linkedin.svg';
 import FacebookIcon from '../../../public/icon-facebook.svg';
 import InstagramIcon from '../../../public/icon-instagram.svg';
@@ -21,9 +21,11 @@ export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
 				</nav>
 				<div className={styles.subscribe}>
 					<Input
+						type={'email'}
 						placeholder={'Ваш email для акций и предложений'}
 						icon={'arrow'}
 					/>
+					<Toaster position="bottom-center" reverseOrder={false} />
 				</div>
 			</div>
 			<div className={styles.bottom}>

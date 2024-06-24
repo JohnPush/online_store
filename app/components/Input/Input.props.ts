@@ -6,5 +6,6 @@ export interface InputProps
 		HTMLInputElement
 	> {
 	placeholder: string;
+	type: 'email';
 	icon: 'arrow' | 'loupe' | 'close' | 'none';
 }
