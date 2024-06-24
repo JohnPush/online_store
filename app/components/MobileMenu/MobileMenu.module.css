@@ -21,6 +21,11 @@
 	border-bottom: 1px solid #d8d8d8;
 }
 
+.nav a,
+.icons a {
+	color: #000000;
+}
+
 .icons {
 	display: flex;
 	flex-direction: column;

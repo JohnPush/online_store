@@ -5,6 +5,7 @@ import './globals.css';
 import { Metadata } from 'next';
 import { DM_Sans, Allerta_Stencil } from 'next/font/google';
 import { Header } from './components/index';
+import { Footer } from './components/index';
 
 const DMSans = DM_Sans({ subsets: ['latin'] });
 const AllertaStencil = Allerta_Stencil({
@@ -27,6 +28,7 @@ export default function RootLayout({
 			<body className={DMSans.className}>
 				<Header logoClassName={AllertaStencil.className} />
 				<main>{children}</main>
+				<Footer />
 			</body>
 		</html>
 	);
