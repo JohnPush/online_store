@@ -3,24 +3,19 @@ import styles from './FormSubscription.module.css';
 import { FormSubscriptionProps } from './FormSubscription.props';
 import React from 'react';
 import ArrowIcon from '@/public/icon-arrow.svg';
-import LoupeIcon from '@/public/icon-search-button.svg';
 import CheckmarkIcon from '@/public/icon-checkmark.svg';
 import { Input } from '../Input/Input';
-import { IconType, InputType } from '../Input/Input.props';
+import { InputType } from '../Input/Input.props';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 
 interface FormData {
-	[key: string]: any;
+	text: string;
 }
 
 export const FormSubscription = ({
-	placeholder,
-	icon
-}: {
-	placeholder: string;
-	icon: IconType;
-}): JSX.Element => {
+	...props
+}: FormSubscriptionProps): JSX.Element => {
 	const { register, handleSubmit, reset } = useForm<FormData>();
 
 	const onSubmit = (data: FormData) => {
@@ -39,20 +34,13 @@ export const FormSubscription = ({
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
 			<Input
 				type={InputType.Email}
-				placeholder={placeholder}
+				placeholder="Ваш email для акций и предложений"
 				register={register}
 				name="email"
 			/>
-			{icon === IconType.Arrow && (
-				<button type="submit" className={styles.button}>
-					<ArrowIcon />
-				</button>
-			)}
-			{icon === IconType.Loupe && (
-				<button type="submit" className={styles.button}>
-					<LoupeIcon />
-				</button>
-			)}
+			<button type="submit" className={styles.button}>
+				<ArrowIcon />
+			</button>
 		</form>
 	);
 };

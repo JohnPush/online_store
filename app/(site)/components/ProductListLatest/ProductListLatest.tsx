@@ -2,24 +2,20 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '@/api/products';
 import { Product } from '@/interfaces/products.interface';
-import { ListProductCardProps } from './ListProductCard.props';
+import { ProductListLatestProps } from './ProductListLatest.props';
 import { ProductCard } from '../ProductCard/ProductCard';
-import styles from './ListProductCard.module.css';
+import styles from './ProductListLatest.module.css';
 
-export const ListProductCard = ({
+export const ProductListLatest = ({
 	...props
-}: ListProductCardProps): JSX.Element => {
+}: ProductListLatestProps): JSX.Element => {
 	const [products, setProducts] = useState<Product[]>([]);
-	const [totalProducts, setTotalProducts] = useState<number>(0);
 
 	useEffect(() => {
 		async function fetchProducts() {
 			try {
 				const data = await getProducts();
 				setProducts(data.products.slice(0, 6));
-
-				setTotalProducts(data.totalProducts);
-				console.log('Total Products:', data.totalProducts);
 			} catch (error) {
 				console.error(error);
 			}
@@ -28,7 +24,7 @@ export const ListProductCard = ({
 	}, []);
 
 	return (
-		<div className={styles.productList}>
+		<div className={styles.productListLatest}>
 			{products.map((product) => (
 				<ProductCard key={product.sku} product={product} />
 			))}

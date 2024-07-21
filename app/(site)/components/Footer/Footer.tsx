@@ -21,10 +21,7 @@ export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
 					<Link href="/delivery-and-returns">ДОСТАВКА И ВОЗВРАТ</Link>
 				</nav>
 				<div className={styles.subscribe}>
-					<FormSubscription
-						placeholder="Ваш email для акций и предложений"
-						icon={IconType.Arrow}
-					/>
+					<FormSubscription />
 					<Toaster position="bottom-center" reverseOrder={false} />
 				</div>
 			</div>

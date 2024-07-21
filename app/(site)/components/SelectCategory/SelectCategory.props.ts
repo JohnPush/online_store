@@ -1,10 +1,10 @@
 import { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
 
-export interface CategorySelectProps
+export interface SelectCategoryProps
 	extends DetailedHTMLProps<
 		SelectHTMLAttributes<HTMLSelectElement>,
 		HTMLSelectElement
 	> {
-	options: { value: string; label: string }[];
-	onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+	onCategoryChange: (categoryId: string) => void;
+	selectedCategory?: string;
 }

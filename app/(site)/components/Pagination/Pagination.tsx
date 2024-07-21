@@ -1,36 +1,38 @@
+'use client';
+
 import { PaginationProps } from './Pagination.props';
 import styles from './Pagination.module.css';
-import Link from 'next/link';
-import { Input } from '../Input/Input';
-import LinkedinIcon from '../../../public/icon-linkedin.svg';
+import React, { useState } from 'react';
 
-export const Pagination = ({
-	currentPage,
-	totalPages,
-	onPageChange,
-	...props
-}: PaginationProps): JSX.Element => {
+export const Pagination = ({ ...props }: PaginationProps): JSX.Element => {
+	const [currentPage, setCurrentPage] = useState(1);
+	const totalPages = 4; // заменить на функцию получения данных о количестве страниц поиска для паджнации
+
+	const handlePageChange = (page: number) => {
+		setCurrentPage(page);
+	};
+
 	const handleFirst = () => {
 		if (currentPage > 1) {
-			onPageChange(1);
+			handlePageChange(1);
 		}
 	};
 
 	const handlePrevious = () => {
 		if (currentPage > 1) {
-			onPageChange(currentPage - 1);
+			handlePageChange(currentPage - 1);
 		}
 	};
 
 	const handleNext = () => {
 		if (currentPage < totalPages) {
-			onPageChange(currentPage + 1);
+			handlePageChange(currentPage + 1);
 		}
 	};
 
 	const handleLast = () => {
 		if (currentPage < totalPages) {
-			onPageChange(totalPages);
+			handlePageChange(totalPages);
 		}
 	};
 
@@ -57,7 +59,7 @@ export const Pagination = ({
 			{[...Array(totalPages)].map((_, index) => (
 				<button
 					key={index}
-					onClick={() => onPageChange(index + 1)}
+					onClick={() => handlePageChange(index + 1)}
 					className={`${styles.pageButton} ${
 						currentPage === index + 1 ? styles.active : ''
 					}`}

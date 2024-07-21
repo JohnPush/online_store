@@ -1,6 +1,9 @@
 import styles from './page.module.css';
 import { Metadata } from 'next';
-import { ListProductCard } from './components';
+import { ProductListLatest } from './components';
+import { Gallery } from './components';
+
+import React from 'react';
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {
@@ -11,8 +14,13 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
 	return (
 		<main className={styles.main}>
-			<div>Последние поступления</div>
-			<ListProductCard />
+			<Gallery />
+
+			<div className={styles.top}>
+				<h1 className={styles.title}>Последние поступления</h1>
+				<button className={styles.button}>Все</button>
+			</div>
+			<ProductListLatest />
 		</main>
 	);
 }

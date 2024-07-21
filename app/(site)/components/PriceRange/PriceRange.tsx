@@ -2,26 +2,55 @@
 
 import { PriceRangeProps } from './PriceRange.props';
 import styles from './PriceRange.module.css';
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
+import { getFilter } from '@/api/filter';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export const PriceRange = ({
-	min,
-	max,
 	step,
 	priceGap,
 	...props
 }: PriceRangeProps): JSX.Element => {
-	const [minValue, setMinValue] = useState(min);
-	const [maxValue, setMaxValue] = useState(max);
+	const [minValue, setMinValue] = useState(0);
+	const [maxValue, setMaxValue] = useState(0);
+	const [min, setMin] = useState(0);
+	const [max, setMax] = useState(0);
 
-	const handleMinRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+
+	useEffect(() => {
+		async function fetchFilterData() {
+			try {
+				const data = await getFilter();
+				const minPriceParam = searchParams.get('minPrice');
+				const maxPriceParam = searchParams.get('maxPrice');
+				setMin(data.minPrice);
+				setMax(data.maxPrice);
+				setMinValue(minPriceParam ? Number(minPriceParam) : data.minPrice);
+				setMaxValue(maxPriceParam ? Number(maxPriceParam) : data.maxPrice);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+
+		fetchFilterData();
+	}, [searchParams]);
+
+	const handleMinRangeChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = Math.min(Number(e.target.value), maxValue - priceGap);
 		setMinValue(value);
+		const params = new URLSearchParams(searchParams.toString());
+		params.set('minPrice', value.toString());
+		router.push(`/shop?${params.toString()}`);
 	};
 
-	const handleMaxRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleMaxRangeChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = Math.max(Number(e.target.value), minValue + priceGap);
 		setMaxValue(value);
+		const params = new URLSearchParams(searchParams.toString());
+		params.set('maxPrice', value.toString());
+		router.push(`/shop?${params.toString()}`);
 	};
 
 	return (
