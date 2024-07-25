@@ -20,7 +20,7 @@ export const Gallery = ({ ...props }: GalleryProps): JSX.Element => {
 	useEffect(() => {
 		async function fetchProducts() {
 			try {
-				const data = await getProducts();
+				const data = await getProducts(); /*как исправить?*/
 				setProducts(data.products.slice(0, 6));
 			} catch (error) {
 				console.error(error);
@@ -35,7 +35,7 @@ export const Gallery = ({ ...props }: GalleryProps): JSX.Element => {
 				<>
 					<Image
 						src={galleryIcons[currentProduct % galleryIcons.length]}
-						alt={'ЧТО ПИСАТЬ ЕСЛИ КАРТИНКА МЕНЯЕТСЯ?'}
+						alt={''}
 						className={styles.image}
 						width={1248}
 						height={646}

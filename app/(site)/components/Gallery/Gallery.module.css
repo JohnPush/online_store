@@ -32,9 +32,9 @@
 	margin-bottom: 48px;
 }
 
-/*визуально вижу что то не то, понять не могу (кроме ширины)*/
 .linkProduct {
-	width: 193px; /*как задать ширину без оборачивания в div*/
+	display: block;
+	width: 239px;
 	border-radius: 6px;
 	border: 2px solid #ffffff;
 	padding: 11px 23px;
@@ -75,6 +75,7 @@
 @media (max-width: 860px) {
 	.image {
 		border-radius: 8px;
+		object-fit: cover;
 	}
 
 	.info {
