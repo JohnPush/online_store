@@ -1,5 +1,3 @@
-/* попробуй установить конкретную цену совместив min и max. Подвинуть min нельзя пока не уберешь max. Не могу понять как исправить.
-*/
 .priceRange {
 	width: 262px;
 }
@@ -23,7 +21,7 @@
 .rangeInput input {
 	position: absolute;
 	width: 100%;
-	height: 2px;
+	height: 5px;
 	top: -5px;
 	left: -2.5px;
 	background: none;
@@ -35,7 +33,8 @@
 
 .rangeInput input[type='range']::-webkit-slider-thumb {
 	height: 10px;
-	width: 2px;
+	width: 10px;
+	border-radius: 50%;
 	background: #000000;
 	pointer-events: auto;
 	-webkit-appearance: none;

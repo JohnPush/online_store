@@ -2,14 +2,18 @@
 
 import { PaginationProps } from './Pagination.props';
 import styles from './Pagination.module.css';
-import React, { useState } from 'react';
 
-export const Pagination = ({ ...props }: PaginationProps): JSX.Element => {
-	const [currentPage, setCurrentPage] = useState(1);
-	const totalPages = 4; // заменить на функцию получения данных о количестве страниц поиска для паджнации
+export const Pagination = ({
+	totalProducts,
+	currentPage,
+	onPageChange,
+	...props
+}: PaginationProps): JSX.Element => {
+	const productsPerPage = 3;
+	const totalPages = Math.ceil(totalProducts / productsPerPage + 1);
 
 	const handlePageChange = (page: number) => {
-		setCurrentPage(page);
+		onPageChange(page);
 	};
 
 	const handleFirst = () => {

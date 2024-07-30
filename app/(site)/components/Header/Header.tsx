@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import { HeaderProps } from './Header.props';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SearchButton } from '../SearchButton/SearchButton';
+import { ButtonIconSearch } from '../ButtonIconSearch/ButtonIconSearch';
 import { FormSearchSite } from '../FormSearchSite/FormSearchSite';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 
@@ -42,7 +42,7 @@ export const Header = ({
 			</nav>
 			{!isSearchVisible && (
 				<div className={styles.searchButton}>
-					<SearchButton onClick={handleSearchButtonClick} />
+					<ButtonIconSearch onClick={handleSearchButtonClick} />
 				</div>
 			)}
 			{isSearchVisible && (

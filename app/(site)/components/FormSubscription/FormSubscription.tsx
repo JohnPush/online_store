@@ -8,10 +8,7 @@ import { Input } from '../Input/Input';
 import { InputType } from '../Input/Input.props';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-
-interface FormData {
-	text: string;
-}
+import { FormData } from '@/interfaces/formData.interface';
 
 export const FormSubscription = ({
 	...props
@@ -19,7 +16,6 @@ export const FormSubscription = ({
 	const { register, handleSubmit, reset } = useForm<FormData>();
 
 	const onSubmit = (data: FormData) => {
-		console.log(data);
 		toast.custom(
 			<div className={styles.toast}>
 				<CheckmarkIcon />

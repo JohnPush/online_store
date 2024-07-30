@@ -7,10 +7,7 @@ import { Input } from '../Input/Input';
 import { InputType } from '../Input/Input.props';
 import { useForm } from 'react-hook-form';
 import { useRouter, useSearchParams } from 'next/navigation';
-
-interface FormData {
-	text: string;
-}
+import { FormData } from '@/interfaces/formData.interface';
 
 export const FormSearchCatalog = ({
 	...props

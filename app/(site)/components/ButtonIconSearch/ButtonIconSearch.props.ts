@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 
-export interface SearchButtonProps
+export interface ButtonIconSearchProps
 	extends DetailedHTMLProps<
 		ButtonHTMLAttributes<HTMLButtonElement>,
 		HTMLButtonElement

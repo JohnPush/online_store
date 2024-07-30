@@ -1,12 +1,12 @@
 'use client';
-import styles from './SearchButton.module.css';
-import { SearchButtonProps } from './SearchButton.props';
+import styles from './ButtonIconSearch.module.css';
+import { ButtonIconSearchProps } from './ButtonIconSearch.props';
 import React, { useState } from 'react';
 import SearchIcon from '@/public/icon-search-button.svg';
 
-export const SearchButton = ({
+export const ButtonIconSearch = ({
 	onClick,
 	...props
-}: SearchButtonProps): JSX.Element => {
+}: ButtonIconSearchProps): JSX.Element => {
 	return <SearchIcon onClick={onClick} className={styles.iconSearch} />;
 };

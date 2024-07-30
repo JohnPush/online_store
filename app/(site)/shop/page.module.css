@@ -17,8 +17,5 @@
 }
 
 .wrapperCatalog {
-	display: flex;
-	flex-direction: column;
-	gap: 59px;
 	flex-grow: 1;
 }

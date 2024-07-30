@@ -1,8 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-export interface PaginationProps
+export interface ClientComponentProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	totalProducts: number;
-	currentPage: number;
-	onPageChange: (page: number) => void;
 }

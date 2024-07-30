@@ -4,7 +4,7 @@ import styles from './ProductFilter.module.css';
 
 import { SelectCategory } from '../SelectCategory/SelectCategory';
 import { PriceRange } from '../PriceRange/PriceRange';
-import { ToggleDiscount } from '../ToggleDiscount/ToggleDiscount';
+// import { ToggleDiscount } from '../ToggleDiscount/ToggleDiscount';
 import { FormSearchCatalog } from '../FormSearchCatalog/FormSearchCatalog';
 import { useSearchParams, useRouter } from 'next/navigation';
 
@@ -33,7 +33,7 @@ export const ProductFilter = ({
 				selectedCategory={categoryId || ''}
 			/>
 			<PriceRange step={1} priceGap={0} />
-			<ToggleDiscount />
+			{/* <ToggleDiscount /> */}
 		</div>
 	);
 };

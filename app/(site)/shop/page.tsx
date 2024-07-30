@@ -1,8 +1,8 @@
 import styles from './page.module.css';
 import { Metadata } from 'next';
-import { ProductList } from '../components';
-import { Pagination } from '../components';
+import { ClientComponent } from '../components';
 import { ProductFilter } from '../components';
+import { getProducts } from '@/api/products';
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {
@@ -10,7 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default function Shop() {
+export default async function Shop() {
+	const data = await getProducts(3, 0);
 	return (
 		<main className={styles.main}>
 			<h1 className={styles.title}>Каталог товаров</h1>
@@ -19,8 +20,7 @@ export default function Shop() {
 					<ProductFilter />
 				</div>
 				<div className={styles.wrapperCatalog}>
-					<ProductList />
-					<Pagination />
+					<ClientComponent totalProducts={data.totalProducts} />
 				</div>
 			</div>
 		</main>

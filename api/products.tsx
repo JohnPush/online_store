@@ -1,27 +1,18 @@
 import axios, { AxiosError } from 'axios';
 import { API } from '@/app/api';
+import { Root } from '@/interfaces/products.interface';
 
-interface GetProductsParams {
-	categoryId?: number;
-	name?: string;
-	minPrice?: number;
-	maxPrice?: number;
-	discount?: boolean;
-}
-
-export async function getProducts(params: GetProductsParams) {
+export async function getProducts(
+	limit: number,
+	offset: number,
+	discounted?: boolean
+): Promise<Root> {
 	try {
-		const { categoryId, name, minPrice, maxPrice, discount } = params;
-
 		const response = await axios.get(API.products, {
 			params: {
-				limit: 1000,
-				offset: 0,
-				...(categoryId !== undefined && { categoryId }),
-				...(name !== undefined && { name }),
-				...(minPrice !== undefined && { minPrice }),
-				...(maxPrice !== undefined && { maxPrice }),
-				...(discount !== undefined && { discount })
+				limit,
+				offset,
+				discounted: discounted ? true : undefined
 			}
 		});
 		return response.data;

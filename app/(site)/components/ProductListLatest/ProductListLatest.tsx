@@ -14,7 +14,7 @@ export const ProductListLatest = ({
 	useEffect(() => {
 		async function fetchProducts() {
 			try {
-				const data = await getProducts(); /*как исправить?*/
+				const data = await getProducts(6, 0);
 				setProducts(data.products.slice(0, 6));
 			} catch (error) {
 				console.error(error);
